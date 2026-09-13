@@ -256,17 +256,18 @@
       .kt-vault-status {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 7px;
         color: #fff;
       }
 
       .kt-vault-status::before {
         content: "";
-        width: 7px;
-        height: 7px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
-        background: #ce93d8;
-        animation: ktStatus 1.5s ease-in-out infinite;
+        background: #00e676;
+        box-shadow: 0 0 8px #00e676;
+        animation: ktStatusPulse 1.4s ease-in-out infinite;
       }
 
       .kt-vault-body {
@@ -442,17 +443,16 @@
         justify-content: center;
         width: 28px;
         height: 28px;
-        color: #fff;
         background: rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.35);
         border-radius: 8px;
-        font-size: 11px;
+        overflow: hidden;
       }
 
-      .kt-access-register .kt-btn-index {
-        color: #ffffff;
-        background: rgba(255, 255, 255, 0.28);
-        border-color: rgba(255, 255, 255, 0.45);
+      .kt-btn-index amp-img {
+        display: block;
+        width: 16px;
+        height: 16px;
       }
 
       .kt-btn-label {
@@ -571,34 +571,22 @@
 
       .kt-opening-seal {
         position: relative;
-        width: 70px;
-        height: 70px;
+        width: 68px;
+        height: 68px;
         margin-bottom: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         opacity: 0;
-        transform: rotate(45deg) scale(0.15);
-        background: linear-gradient(145deg, #ab47bc, #4a148c 50%, #7b1fa2);
-        border: 2px solid #e1bee7;
+        transform: scale(0.2);
         animation: ktSealReveal 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
       }
 
-      .kt-opening-seal::before,
-      .kt-opening-seal::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        background: #12001c;
-        transform: translate(-50%, -50%);
-      }
-
-      .kt-opening-seal::before {
-        width: 28px;
-        height: 3px;
-      }
-
-      .kt-opening-seal::after {
-        width: 3px;
-        height: 28px;
+      .kt-opening-seal amp-img {
+        display: block;
+        width: 54px;
+        height: 54px;
+        animation: ktSpinLogo 4s linear infinite;
       }
 
       .kt-opening-brand {
@@ -684,9 +672,15 @@
         }
       }
 
-      @keyframes ktStatus {
-        0%, 100% { opacity: 0.45; }
-        50% { opacity: 1; }
+      @keyframes ktStatusPulse {
+        0%, 100% {
+          transform: scale(0.9);
+          box-shadow: 0 0 4px #00e676;
+        }
+        50% {
+          transform: scale(1.2);
+          box-shadow: 0 0 12px #00e676;
+        }
       }
 
       @keyframes ktScan {
@@ -743,15 +737,24 @@
       @keyframes ktSealReveal {
         0% {
           opacity: 0;
-          transform: rotate(45deg) scale(0.15);
+          transform: scale(0.2);
         }
         65% {
           opacity: 1;
-          transform: rotate(225deg) scale(1.12);
+          transform: scale(1.12);
         }
         100% {
           opacity: 1;
-          transform: rotate(225deg) scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes ktSpinLogo {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
         }
       }
 
@@ -870,7 +873,6 @@
         .kt-btn-index {
           width: 25px;
           height: 25px;
-          font-size: 10px;
         }
 
         .kt-btn-arrow {
@@ -886,9 +888,14 @@
         }
 
         .kt-opening-seal {
-          width: 59px;
-          height: 59px;
+          width: 58px;
+          height: 58px;
           margin-bottom: 19px;
+        }
+
+        .kt-opening-seal amp-img {
+          width: 46px;
+          height: 46px;
         }
 
         .kt-opening-brand {
@@ -944,7 +951,8 @@
         .kt-hero-scan,
         .kt-access-btn::after,
         .kt-vault-footer::before,
-        .kt-copyright {
+        .kt-copyright,
+        .kt-opening-seal amp-img {
           animation: none;
         }
 
@@ -964,7 +972,15 @@
       <section class="kt-vault-shell" aria-label="Akses resmi QQTURBO">
         <div class="kt-opening" aria-hidden="true">
           <div class="kt-opening-center">
-            <div class="kt-opening-seal"></div>
+            <div class="kt-opening-seal">
+              <amp-img
+                src="favicon.png"
+                width="64"
+                height="64"
+                layout="responsive"
+                alt="Logo Loader"
+              ></amp-img>
+            </div>
             <div class="kt-opening-brand">QQTURBO</div>
             <div class="kt-opening-line"></div>
             <div class="kt-opening-subtitle">WELCOME</div>
@@ -977,7 +993,7 @@
             <span>QQTURBO</span>
           </div>
 
-          <div class="kt-vault-status">SITUS TOTO</div>
+          <div class="kt-vault-status"></div>
         </header>
 
         <div class="kt-vault-body">
@@ -1015,7 +1031,9 @@
               class="kt-access-btn kt-access-register"
               rel="nofollow noopener"
             >
-              <span class="kt-btn-index">⚡</span>
+              <span class="kt-btn-index">
+                <amp-img src="favicon.png" width="24" height="24" layout="responsive" alt="icon"></amp-img>
+              </span>
               <span class="kt-btn-label">Daftar QQTURBO</span>
               <span class="kt-btn-arrow">&rsaquo;</span>
             </a>
@@ -1025,7 +1043,9 @@
               class="kt-access-btn kt-access-login"
               rel="nofollow noopener"
             >
-              <span class="kt-btn-index">⚡</span>
+              <span class="kt-btn-index">
+                <amp-img src="favicon.png" width="24" height="24" layout="responsive" alt="icon"></amp-img>
+              </span>
               <span class="kt-btn-label">Login QQTURBO</span>
               <span class="kt-btn-arrow">&rsaquo;</span>
             </a>
@@ -1035,8 +1055,10 @@
               class="kt-access-btn kt-access-alt"
               rel="nofollow noopener"
             >
-              <span class="kt-btn-index">⚡</span>
-              <span class="kt-btn-label">Telegram QQTURBO</span>
+              <span class="kt-btn-index">
+                <amp-img src="favicon.png" width="24" height="24" layout="responsive" alt="icon"></amp-img>
+              </span>
+              <span class="kt-btn-label">Telegram Official</span>
               <span class="kt-btn-arrow">&rsaquo;</span>
             </a>
 
@@ -1045,8 +1067,10 @@
               class="kt-access-btn kt-access-alt"
               rel="nofollow noopener"
             >
-              <span class="kt-btn-index">⚡</span>
-              <span class="kt-btn-label">WhatsApp QQTURBO</span>
+              <span class="kt-btn-index">
+                <amp-img src="favicon.png" width="24" height="24" layout="responsive" alt="icon"></amp-img>
+              </span>
+              <span class="kt-btn-label">WhatsApp Official</span>
               <span class="kt-btn-arrow">&rsaquo;</span>
             </a>
           </nav>
