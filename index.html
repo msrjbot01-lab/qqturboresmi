@@ -225,32 +225,43 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        min-height: 45px;
-        padding: 12px 15px;
+        min-height: 48px;
+        padding: 10px 15px;
         color: #fff;
         background: linear-gradient(135deg, #38006b 0%, #6a1b9a 42%, #38006b 100%);
         border-bottom: 1px solid rgba(156, 39, 176, 0.5);
         font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-        font-size: 9px;
+        font-size: 10px;
         font-weight: 800;
-        letter-spacing: 1px;
+        letter-spacing: 1.2px;
         text-transform: uppercase;
       }
 
       .kt-vault-mark {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 9px;
       }
 
+      /* Perubahan: Desain Ikon Mahkota/Logo yang Lebih Keren & Premium */
       .kt-vault-gem {
-        width: 10px;
-        height: 10px;
-        flex: 0 0 10px;
-        background: linear-gradient(145deg, var(--kt-purple-bright), var(--kt-purple-dark));
-        border: 1px solid #e1bee7;
-        transform: rotate(45deg);
-        animation: ktGem 2.4s ease-in-out infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: linear-gradient(135deg, #4a148c 0%, #220033 100%);
+        border: 1px solid var(--kt-gold-light);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(217, 164, 65, 0.4), inset 0 0 5px rgba(255, 227, 160, 0.3);
+        animation: ktCrownGlow 2.5s ease-in-out infinite;
+      }
+
+      .kt-vault-gem svg {
+        width: 16px;
+        height: 16px;
+        fill: url(#goldGradient);
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
       }
 
       .kt-vault-status {
@@ -651,14 +662,12 @@
         }
       }
 
-      @keyframes ktGem {
+      @keyframes ktCrownGlow {
         0%, 100% {
-          opacity: 0.55;
-          transform: rotate(45deg) scale(0.85);
+          box-shadow: 0 0 8px rgba(217, 164, 65, 0.3), inset 0 0 4px rgba(255, 227, 160, 0.2);
         }
         50% {
-          opacity: 1;
-          transform: rotate(225deg) scale(1);
+          box-shadow: 0 0 15px rgba(217, 164, 65, 0.7), inset 0 0 8px rgba(255, 227, 160, 0.5);
         }
       }
 
@@ -809,10 +818,10 @@
         }
 
         .kt-vault-top {
-          min-height: 42px;
+          min-height: 45px;
           padding: 10px 12px;
-          font-size: 8px;
-          letter-spacing: 0.8px;
+          font-size: 9px;
+          letter-spacing: 1px;
         }
 
         .kt-vault-body {
@@ -900,7 +909,7 @@
         }
 
         .kt-vault-top {
-          font-size: 7px;
+          font-size: 8px;
         }
 
         .kt-kicker {
@@ -953,6 +962,17 @@
   </head>
 
   <body>
+    <!-- SVG Definisi Gradasi Warna Emas Mewah -->
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffe3a0" />
+          <stop offset="50%" stop-color="#d9a441" />
+          <stop offset="100%" stop-color="#8f651c" />
+        </linearGradient>
+      </defs>
+    </svg>
+
     <main class="kt-amp-stage">
       <section class="kt-vault-shell" aria-label="Akses resmi QQTURBO">
         <div class="kt-opening" aria-hidden="true">
@@ -974,7 +994,12 @@
 
         <header class="kt-vault-top">
           <div class="kt-vault-mark">
-            <span class="kt-vault-gem"></span>
+            <!-- Ikon Mahkota Mewah Pengganti Kotak Biasa -->
+            <div class="kt-vault-gem">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+              </svg>
+            </div>
             <span>QQTURBO</span>
           </div>
 
